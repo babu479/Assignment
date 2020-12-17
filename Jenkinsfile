@@ -28,7 +28,7 @@ pipeline {
         stage ('Git pull'){
             steps{
                 checkout scm
-                echo '${STAGE_NAME}' >> $WORKSPACE/stageExecuted
+                sh """ echo '${STAGE_NAME}' >> $WORKSPACE/stageExecuted """
             }
         }
         stage ('Is this required?'){
@@ -58,7 +58,7 @@ pipeline {
                     }
                     
                 }
-                echo '${STAGE_NAME}' >> $WORKSPACE/stageExecuted
+                sh """ echo '${STAGE_NAME}' >> $WORKSPACE/stageExecuted """
                 
             }
         }
@@ -81,7 +81,7 @@ pipeline {
                     sh 'cat Unit_Test.txt'
                     sh 'pwd'
                     sh 'ls -lrt'
-                    echo '${STAGE_NAME}' >> $WORKSPACE/stageExecuted
+                    sh """ echo '${STAGE_NAME}' >> $WORKSPACE/stageExecuted """
                 }
             }
         }
@@ -100,7 +100,7 @@ pipeline {
                             }
                             steps{
                                 echo "Static Check"
-                                echo '${STAGE_NAME}' >> $WORKSPACE/stageExecuted
+                                sh """ echo '${STAGE_NAME}' >> $WORKSPACE/stageExecuted """
                             }
                         }
                         stage ('QA'){
@@ -111,7 +111,7 @@ pipeline {
                             }
                             steps {
                                 echo "QA Done"
-                                echo '${STAGE_NAME}' >> $WORKSPACE/stageExecuted
+                               sh """ echo '${STAGE_NAME}' >> $WORKSPACE/stageExecuted """
                             }
                         }
                     }
@@ -128,7 +128,7 @@ pipeline {
                     }
                     steps {
                         echo "UT done"
-                        echo '${STAGE_NAME}' >> $WORKSPACE/stageExecuted
+                        sh """ echo '${STAGE_NAME}' >> $WORKSPACE/stageExecuted """
                     }
                 }
             }
@@ -136,7 +136,7 @@ pipeline {
         stage ('Summary'){
             steps {
                 echo "Print summary of all stages"
-                sh """ cat $WORKSPACE/stageExecuted"""
+               sh """ echo '${STAGE_NAME}' >> $WORKSPACE/stageExecuted """
             }
         }
 
