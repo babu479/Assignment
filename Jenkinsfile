@@ -27,6 +27,7 @@ pipeline {
     stages {
         stage ('Git pull'){
             steps{
+                deleteDir()
                 checkout scm
                 sh """ echo '${STAGE_NAME}' >> $WORKSPACE/stageExecuted """
             }
