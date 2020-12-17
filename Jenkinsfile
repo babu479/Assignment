@@ -100,8 +100,10 @@ pipeline {
                                 }
                             }
                             steps{
+                                script {
                                 echo "Static Check"
                                 sh """ echo '${STAGE_NAME}' >> $WORKSPACE/stageExecuted """
+                            }
                             }
                         }
                         stage ('QA'){
