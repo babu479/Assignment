@@ -136,7 +136,7 @@ pipeline {
         stage ('Summary'){
             steps {
                 echo "Print summary of all stages"
-               sh """ echo '${STAGE_NAME}' >> $WORKSPACE/stageExecuted """
+               sh """ cat $WORKSPACE/stageExecuted """
             }
         }
 
