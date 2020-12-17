@@ -27,7 +27,7 @@ pipeline {
     stages {
         stage ('Git pull'){
             steps{
-                echo "Pull from Git"
+                checkout scm
             }
         }
         stage ('Is this required?'){
